@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        background-image: url(pentile_matrix.jpg);
+        background-repeat: repeat;
+        color: white;
+        line-height: 2;
+        background-attachment: fixed;
+    }
+    
+    .information {
+        vertical-align: auto;
+        align-content: center;
+        position: absolute;
+        left: 50%;
+        top: 5%;
+        transform: translate(-50%, 0%);
+        background-color: black;
+        font-size: x-large;
+        padding: 0px 70px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    h1 {
+        color: teal;
+        font-weight: bold;
+    }
+    
+    .wrapper {
+        display: grid;
+        border-style: hidden;
+        border-color: transparent;
+        border-spacing: 0%;
+        grid-template-columns: 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111%;
+        grid-template-rows: 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111% 11.1111111%;
+        height: 100vh;
+        width: 100vw;
+        padding: 0%;
+        margin: 0%;
+        grid-gap: 0%;
+    }
+    
+    @keyframes box1 {
+        0% {
+            background-color: white;
+        }
+        33% {
+            background-color: red;
+        }
+        66% {
+            background-color: green;
+        }
+        100% {
+            background-color: blue;
+        }
+    }
+    
+    .box1 {
+        animation-name: box1;
+        animation-duration: 66.6666666667ms;
+        animation-iteration-count: infinite;
+        -webkit-transition-timing-function: linear;
+    }
+    
+    @keyframes box2 {
+        0% {
+            background-color: red;
+        }
+        33% {
+            background-color: green;
+        }
+        66% {
+            background-color: blue;
+        }
+        100% {
+            background-color: white;
+        }
+    }
+    
+    .box2 {
+        animation-name: box2;
+        animation-duration: 66.6666666667ms;
+        animation-iteration-count: infinite;
+        -webkit-transition-timing-function: linear;
+    }
+    
+    @keyframes box3 {
+        0% {
+            background-color: green;
+        }
+        33% {
+            background-color: blue;
+        }
+        66% {
+            background-color: white;
+        }
+        100% {
+            background-color: red;
+        }
+    }
+    
+    .box3 {
+        animation-name: box3;
+        animation-duration: 66.6666666667ms;
+        animation-iteration-count: infinite;
+        -webkit-transition-timing-function: linear;
+    }
+    
+    @keyframes box4 {
+        0% {
+            background-color: blue;
+        }
+        33% {
+            background-color: white;
+        }
+        66% {
+            background-color: red;
+        }
+        100% {
+            background-color: green;
+        }
+    }
+    
+    .box4 {
+        animation-name: box4;
+        animation-duration: 66.6666666667ms;
+        animation-iteration-count: infinite;
+        -webkit-transition-timing-function: linear;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="information" id="infoDIV">
+        <h1>What is OLED burn in?</h1>
+
+        The different pixels on an OLED (organic light emitting diode) panel are comprised of primary color subpixels as can be seen on the background of this page, although there are other possible arrangements of subpixels. Sometimes, persistent overuse of
+        specific subpixels, such as when a news channel logo is sitting on the screen for a long time, or a notification like the battery meter doesn't change its location, can cause what is known as burn in, where that image, or an alternate colored
+        version of it will persist on the screen.
+
+        <h1>Can it be fixed?</h1>
+
+        It depends. Sometimes, burn in is just afterghosting, which is definitely temporary. The use of a tool such as this one will almost always fix it in this instance.<br><br> Sometimes, however, burn in is so persistent that it cannot be fixed easily.
+        A tool such as this one, at best, can only mitigate the burn in and reduce it, but not completely eliminate it. It's still worth trying.<br>
+
+        <h1>How does it work?</h1>
+
+        This tool tries to stress all subpixels evenly by rapidly flashing primary colors on the screen across different tiles. This causes the display to refresh all the subpixels, stressing them evenly and forcing them to change.
+
+        <h1>How do I check if I have it?</h1>
+
+        Burn-in and ghosting is the easiest to see on white and primary color backgrounds. Conveniently, we have done this for you:
+
+        <br><button style="background-color: white; color: black;" onclick="whiteBackground();openFullscreen()">White</button>
+        <br><button style="background-color: red; color: black; " onclick="redBackground();openFullscreen()">Red</button>
+        <br><button style="background-color: green; color: white; " onclick="greenBackground();openFullscreen()">Green</button>
+        <br><button style="background-color: blue; color: white; " onclick="blueBackground();openFullscreen()">Blue</button>
+
+        <br>Hit refresh on the page to exit the background.
+
+        <br><br>Which one is most effective to see yours depends on the color of the subpixels that have been burned in. When you are done inspecting, feel free to close the new page and return here to run the test.
+
+        <h1>SEIZURE WARNING</h1>
+
+        Because of the rapidly flashing colors, looking at the screen while this tool is active. If you have epilepsy or are prone to seizures, please have someone else do this for you safely.
+
+        <br><br><button onclick="startFix();openFullscreen()"><h1>START FIX</h1></button>
+
+    </div>
+
+    <div class="wrapper" id="fix">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+
+        <div class="box1"></div>
+    </div>
+
+    <script>
+        var x = document.getElementById("fix");
+        console.log(x)
+        x.style.display = "none";
+        var y = document.getElementById("infoDIV");
+        console.log(y)
+
+        function openFullscreen() {
+            var elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        function whiteBackground() {
+            document.getElementById("infoDIV").style.display = "none ";
+            document.body.style.background = "white";
+        }
+
+        function redBackground() {
+            document.getElementById("infoDIV").style.display = "none ";
+            document.body.style.background = "red";
+        }
+
+        function greenBackground() {
+            document.getElementById("infoDIV").style.display = "none ";
+            document.body.style.background = "green";
+        }
+
+        function blueBackground() {
+            document.getElementById("infoDIV").style.display = "none ";
+            document.body.style.background = "blue";
+        }
+
+
+
+        function startFix() {
+            console.log(x);
+            x.style.display = "grid";
+            y.style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
